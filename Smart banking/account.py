@@ -1,21 +1,20 @@
-# account.py
-
 class Account:
-    def __init__(self, account_number, holder_name, pin, balance=0):
-        self.account_number = account_number
-        self.holder_name = holder_name
+    def __init__(self, name, acc_no, pin, balance=0):
+        self.name = name
+        self.acc_no = acc_no
         self.pin = pin
-        self.balance = balance
-        self.transactions = []
+        self.balance = float(balance)
 
     def deposit(self, amount):
         self.balance += amount
+        print(f"Deposited: {amount}")
 
     def withdraw(self, amount):
-        if amount <= self.balance:
+        if amount > self.balance:
+            print("Insufficient Balance")
+        else:
             self.balance -= amount
-            return True
-        return False
+            print(f"Withdrawn: {amount}")
 
-    def view_balance(self):
-        return self.balance
+    def display_balance(self):
+        print(f"Current Balance: {self.balance}")
